@@ -32,7 +32,7 @@ function getRandomInt() {
 //     tweetIt('@' + screenName + 'What a well-constructed thought!');
 //     console.log('follow event happened with ' + screenName);
 //     }
-  };
+//};
 function followed(eventMsg) {
   console.log('follow function called');
   var name = eventMsg.source.name;
