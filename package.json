@@ -1,0 +1,21 @@
+{
+  "name": "twitbot",
+  "version": "1.0.0",
+  "description": "alex's twitter bot. it will tweet random things often.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "twitter",
+    "vince",
+    "gman"
+  ],
+  "author": "Alex Bowen",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2",
+    "twit": "^2.2.9"
+  }
+}
