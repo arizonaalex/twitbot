@@ -16,7 +16,6 @@ stream.on('follow', followed);
 stream.on('unfollow', unfollow);
 stream.on('disconnect', disconnect);
 
-
 function getRandomInt() {
   return Math.floor(Math.random() * Math.floor(100));
 }
@@ -33,6 +32,15 @@ function getRandomInt() {
 //     console.log('follow event happened with ' + screenName);
 //     }
 //};
+
+/*
+Tuesday ToDo
+test array length function
+store last array location
+get next location,
+tweet the mst at that location
+*/
+
 function followed(eventMsg) {
   console.log('follow function called');
   var name = eventMsg.source.name;
@@ -62,9 +70,13 @@ function tweetIt(txt) {
 var d = Date.now();
 //tweet vince once an minute to start, then hourly, then every two hours. 1000millis * 60secs * 120min
 setInterval(function(){
-tweetIt('@vini_io ' + Date.now() + ' ' + getVinceTweet())}, 1000*60*120);
+//console.log(getVinceTweet())}, 1000);
+tweetIt('@vini_io ' + getVinceTweet())}, 1000*60*120);
+
+var currentTweetIndex = -1
 
 function getVinceTweettest() {
+    console.log(currentTweetIndex);
     var vinceTweets = [
       "Hey Vinny G! this issome garbage text",
       "Hey Buddy, this is more garbage?",
@@ -75,23 +87,49 @@ function getVinceTweettest() {
       "Hey, do you have garbage's phone number? he seems like a cool guy.",
       "Why do so many people watch this washed up player? He is so bad at this game. Why is his hair so long? Does hair length have a connection to a players skill?  Is that why girls are so bad at league?"
     ];
-    return vinceTweets[Math.floor(Math.random() * vinceTweets.length)];
-  };
+    if (currentTweetIndex == vinceTweets.length -1){
+      //reset index to zero
+      console.log("resetting index");
+      currentTweetIndex = 0
+    } else {
+      //go to next index value
+    currentTweetIndex++;
+    }
+
+    //tweet current index value
+    return vinceTweets[currentTweetIndex];
+};
 
 function getVinceTweet() {
     var vinceTweets = [
       "Hey Vinny G! It's your pal Mambo Goose!",
       "Hey Buddy, how many mustards are there?",
+      "One time I showed my friend a picture of MLK with 'i have a meme' written on it",
       "ayyyeeeee la ma ooooo (cest oui francais, baybee)",
       "It's probably not a good idea if you come over",
+      "You fold that pizza!",
+      "3 elervens",
+      "http://i0.kym-cdn.com/photos/images/newsfeed/001/333/089/bd4.png",
       "Lemme get a couple of those tortwillas",
       "reeeeeeeeee!!!",
       "How come I see so many Trumpets!?!",
+      "https://i.imgur.com/xUEUXGA.jpg",
       "Thas It!",
       "Hey, do you have John Harden's phone number? he seems like a cool guy.",
       "Why do so many people watch this washed up player? He is so bad at this game. Why is his hair so long? Does hair length have a connection to a players skill?  Is that why girls are so bad at league?"
     ];
-    return vinceTweets[Math.floor(Math.random() * vinceTweets.length)];
+
+    //it's tweet length -1 because arrays are 0 based
+    if (currentTweetIndex == vinceTweets.length -1){
+      //reset index to zero
+      currentTweetIndex = 0
+    } else {
+      //go to next index value
+    currentTweetIndex++;
+    }
+
+    //tweet current index value
+    return vinceTweets[currentTweetIndex];
   };
 
 function tweeted(err,data,response) {
